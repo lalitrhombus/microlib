@@ -23,6 +23,13 @@ describe('microlib',function(){
       var randomItem = microlib.random();
       expect(microlib.all).to.include(randomItem);
     });
+    it('should return the array of randomItem if passed a number', function () {
+      var randomItem = microlib.random(4);
+      expect(randomItem).to.have.length(4);
+      randomItem.forEach(function(item){
+        expect(microlib.all).to.include(item); 
+      });      
+    });
   });
 
 });
