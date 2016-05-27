@@ -2,15 +2,21 @@
   "name": "microlib_node",
   "version": "0.0.0-semantic-release.0",
   "description": "starting package",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "commit": "git-cz",
     "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
     "test": "mocha src/index.test.js -w",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
+    "prebuild": "rimraf dist",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "files":[
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/lalitrhombus/microlib.git"
@@ -28,6 +34,9 @@
     "unique-random-array": "1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "6.9.0",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-stage-2": "6.5.0",
     "chai": "3.5.0",
     "codecov.io": "0.1.6",
     "commitizen": "2.8.1",
@@ -35,6 +44,7 @@
     "ghooks": "1.2.1",
     "istanbul": "0.4.3",
     "mocha": "2.5.3",
+    "rimraf": "2.5.2",
     "semantic-release": "^4.3.5"
   },
   "config": {
@@ -44,5 +54,8 @@
     "ghooks": {
       "pre-commit": "npm run test:single && npm run check-coverage"
     }
+  },
+  "babel":{
+    "presets":["es2015","stage-2"]
   }
 }
