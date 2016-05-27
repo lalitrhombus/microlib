@@ -37,3 +37,6 @@ coverage
 
 # remove dist
 dist
+
+# remove nyc
+.nyc_output
