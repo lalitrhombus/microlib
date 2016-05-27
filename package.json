@@ -1,6 +1,6 @@
 {
-  "name": "microlib",
-  "version": "1.0.0",
+  "name": "microlib_node",
+  "version": "1.1.0",
   "description": "starting package",
   "main": "src/index.js",
   "scripts": {
