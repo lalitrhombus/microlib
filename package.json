@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "commit": "git-cz",
-    "test:single": "mocha src/index.test.js",
+    "test:single": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
     "test": "mocha src/index.test.js -w",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -30,6 +30,7 @@
     "commitizen": "2.8.1",
     "cz-conventional-changelog": "1.1.6",
     "ghooks": "1.2.1",
+    "istanbul": "0.4.3",
     "mocha": "2.5.3",
     "semantic-release": "^4.3.5"
   },
@@ -37,8 +38,8 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     },
-    "ghooks":{
-      "pre-commit":"npm run test:single"
+    "ghooks": {
+      "pre-commit": "npm run test:single"
     }
   }
 }
